@@ -74,9 +74,9 @@ fairseq-preprocess --source-lang de --target-lang de --trainpref data/processed/
 [
     {
         "ident": "VIDEO_ID", 
-        "size": 64  // length of video features
-    }
-    ...
+        "size": "64  // length of video features"
+    },
+    "..."
 ]
 
 ```
