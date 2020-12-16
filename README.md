@@ -2,7 +2,9 @@
 
 **[TSPNet: Hierarchical Feature Learning via Temporal Semantic Pyramid for Sign Language Translation](https://proceedings.neurips.cc//paper/2020/file/8c00dee24c9878fea090ed070b44f1ab-Paper.pdf)**
 
-By [Dongxu Li](https://scholar.google.com.au/citations?user=h5XtaUUAAAAJ&hl=en&oi=ao)*, [Chenchen Xu](https://scholar.google.com.au/citations?user=01_mhZcAAAAJ&hl=en)*,  [Xin Yu](https://scholar.google.com.au/citations?user=oxdtuSEAAAAJ&hl=en), [Kaihao Zhang](https://scholar.google.com.au/citations?user=eqwDXdMAAAAJ&hl=en), [Benjamin Swift](https://scholar.google.com.au/citations?user=OQdYgLEAAAAJ&hl=en), [Hanna Suominen](https://scholar.google.com.au/citations?user=o4qymo4AAAAJ&hl=en), [Hongdong Li](https://scholar.google.com.au/citations?user=Mq89JAcAAAAJ&hl=en)
+By [Dongxu Li](https://scholar.google.com.au/citations?user=h5XtaUUAAAAJ&hl=en&oi=ao)&ast;, [Chenchen Xu](https://scholar.google.com.au/citations?user=01_mhZcAAAAJ&hl=en)&ast;,  [Xin Yu](https://scholar.google.com.au/citations?user=oxdtuSEAAAAJ&hl=en), [Kaihao Zhang](https://scholar.google.com.au/citations?user=eqwDXdMAAAAJ&hl=en), [Benjamin Swift](https://scholar.google.com.au/citations?user=OQdYgLEAAAAJ&hl=en), [Hanna Suominen](https://scholar.google.com.au/citations?user=o4qymo4AAAAJ&hl=en), [Hongdong Li](https://scholar.google.com.au/citations?user=Mq89JAcAAAAJ&hl=en)
+
+(&ast; Authors contributed equally.)
 
 <img src='figs/teaser.png'>
 
