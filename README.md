@@ -4,7 +4,7 @@
 
 By Dongxu Li*, Chenchen Xu*,  Xin Yu, Kaihao Zhang, Benjamin Swift, Hanna Suominen, Hongdong Li
 
-<img src='figs/teaser.jpeg'>
+<img src='figs/teaser.png'>
 
 The repository contains the implementation of TSPNet. Preprocessed dataset, video features and the inference results are available at [Google Drive](https://drive.google.com/drive/folders/1oYV_k1wqGbPUhBrkLRMQb1iWKQp5P3pp?usp=sharing).
 
