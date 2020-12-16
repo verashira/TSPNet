@@ -1,21 +1,21 @@
 # TSPNet
 
-**TSPNet: Hierarchical Feature Learning via TemporalSemantic Pyramid for Sign Language Translation**
+**TSPNet: Hierarchical Feature Learning via Temporal Semantic Pyramid for Sign Language Translation**
 
 By Dongxu Li*, Chenchen Xu*,  Xin Yu, Kaihao Zhang, Benjamin Swift, Hanna Suominen, Hongdong Li
 
 The repository contains the implementation of TSPNet. Preprocessed dataset, video features and the inference results are available at [Google Drive](https://drive.google.com/drive/folders/1oYV_k1wqGbPUhBrkLRMQb1iWKQp5P3pp?usp=sharing).
 
-The repository is based on [fairseq](https://github.com/pytorch/fairseq) and we gratefully thank their effort.
+We thank authors of [fairseq](https://github.com/pytorch/fairseq) for their efforts.
 
 ### Rquirements
 
 * [PyTorch](http://pytorch.org/) version >= 1.4.0
 * Python version >= 3.6
-* For training new models, you'll also need NVIDIA GPU and (optional) [NCCL](https://github.com/NVIDIA/nccl)
-* (optional) [BPEMB](https://nlp.h-its.org/bpemb/), for preparing your own dataset 
+* For training new models, you'll also need NVIDIA GPU and (optionally) [NCCL](https://github.com/NVIDIA/nccl)
+* (optional) [BPEMB](https://nlp.h-its.org/bpemb/), if you prepare datasets by yourself (see below)
 
-### Install from Source
+### Install from source
 
 Install the project from source and develop locally:
 
@@ -24,7 +24,7 @@ cd fairseq
 pip install --editable .
 ```
 
-### Getting Started
+### Getting started
 
 #### Preprocessing
 
@@ -45,56 +45,8 @@ tspnet/
 └── test-scripts/
 ```
 
-* **i3d-features**: the i3d output features of input videos 
+* **i3d-features**: the i3d output features of input videos
 * **data-bin**: the preprocessed translation texts
-
-#### (optional) Prepare your own dataset
-
-Instead, you also may prepare your own dataset following the steps below for both input videos and the translation texts. 
-
-1. **Text** Preprocess the translation texts using `preprocess_sign.py` to BPE, repeatedly for each split, for example:
-
-```bash
-python preprocess_sign.py --save-vecs data/processed/emb data/ori/phoenix2014T.train.de data/processed/train.de
-
-python preprocess_sign.py data/ori/phoenix2014T.test.de data/processed/test.de
-```
-
-The script uses the general purpose German word embeddings available at [BPEMB](https://nlp.h-its.org/bpemb/) and should be installed first `pip install bpemb`.
-
-2. **vocabulary** Run the `fairseq-preprocess` generate the dictionary file. It is optional to drop `--dataset-impl raw` to generate binarized dataset. Without invoking binarization, the only thing we need from this step is the vocabulary (dictionary) file `dict.de.txt`.
-
-```bash
-fairseq-preprocess --source-lang de --target-lang de --trainpref data/processed/train --testpref data/processed/test --destdir data-bin/ --dataset-impl raw
-```
-
-3. **Video** Prepare sign videos and the corresponding video features (e.g. by pretrained i3d networks), and create a json file for each split (e.g. train.sign-de.sign). The json file should be of the format below. It should have the same number of entries as the text file, where each entry corresponds to the sentence at the same line no in the prepared text file.
-
-```json
-[
-    {
-        "ident": "VIDEO_ID", 
-        "size": "64  // length of video features"
-    },
-    "..."
-]
-
-```
-
-
-4. Now consolidating the text files, video json files, the word embedding and vocabulary files into a folder, following the similar structure as below:
-
-```
-data-bin/
-├── train.sign-de.sign
-├── train.sign-de.de
-│ 
-├── test.sign-de.sign
-├── test.sign-de.de
-│ 
-├── emb
-└── dict.de.txt
-```
 
 
 #### Training
@@ -105,7 +57,7 @@ Step into the `run_scripts` folder and start training the model by:
 SAVE_DIR=CHECKPOINT_PATH bash run_phoenix_pos_embed_sp_test_3lvl.sh
 ```
 
-This script run the model reported best performance as in the paper. It feeds the feature pyramid with all 3 scales of features (i.e., with windowing widths of 8, 12, 16). 
+This script run the model reported best performance as in the paper. It feeds the feature pyramid with all 3 scales of features (i.e., with windowing widths of 8, 12, 16).
 
 #### Testing
 
@@ -118,9 +70,64 @@ CHECKPOINT=CHECKPOINT_FILE_PATH bash test_phoenix_pos_embed_sp_test_3lvl.sh
 
 The scripts report multiple performance results where the last line will show the ROUGE-L and BLEU-{n} as in the paper.
 
-### Acknowledgement
 
-Please consider citing our paper as:
+#### Alternative instructions for preparing datasets by yourself
+
+1. **Text**
+
+Install German word embeddings [BPEMB](https://nlp.h-its.org/bpemb/) by `pip install bpemb`.
+
+Preprocess the translation texts using `preprocess_sign.py` to BPE, repeatedly for each split, for example:
+
+```bash
+python preprocess_sign.py --save-vecs data/processed/emb data/ori/phoenix2014T.train.de data/processed/train.de
+
+python preprocess_sign.py data/ori/phoenix2014T.test.de data/processed/test.de
+```
+
+2. **Vocabulary**
+
+<!---Run `fairseq-preprocess` to generate the dictionary file. It is optional to drop `--dataset-impl raw` to generate binarized dataset. Without invoking binarization, the only thing we need from this step is the vocabulary (dictionary) file `dict.de.txt`.--->
+
+
+Generate the dictionary file `dict.de.txt`.
+
+```bash
+fairseq-preprocess --source-lang de --target-lang de --trainpref data/processed/train --testpref data/processed/test --destdir data-bin/ --dataset-impl raw
+```
+
+3. **Video** Prepare sign videos and the corresponding video features (e.g. by pretrained i3d networks), and create a json file for each split (e.g. train.sign-de.sign). The json file should be of the format below. It should have the same number of entries as the text file, where each entry corresponds to the sentence at the same line no in the prepared text file.
+
+```json
+[
+    {
+        "ident": "VIDEO_ID",
+        "size": "64  // length of video features"
+    },
+    "..."
+]
+
+```
+
+
+4. Finally, arrange text files, video json files, word embeddings and vocabulary files into a folder as below:
+
+```
+data-bin/
+├── train.sign-de.sign
+├── train.sign-de.de
+│
+├── test.sign-de.sign
+├── test.sign-de.de
+│
+├── emb
+└── dict.de.txt
+```
+
+
+### Citations
+
+Please cite our paper if you find it useful:
 
 ``` bibtex
 @inproceedings{li2020tspnet,
@@ -132,7 +139,7 @@ Please consider citing our paper as:
 }
 ```
 
-Please also consider citing the WLASL dataset if you use the pre-trained i3d models on this general purpose dataset.
+Please also consider citing the [WLASL dataset](https://dxli94.github.io/WLASL/) if you use the pre-trained i3d features.
 
 ``` bibtex
 @inproceedings{li2020word,
@@ -144,4 +151,13 @@ Please also consider citing the WLASL dataset if you use the pre-trained i3d mod
 }
 ```
 
-
+Other works you might be interested to look at:
+```bibtex
+@inproceedings{li2020transferring,
+  title={Transferring cross-domain knowledge for video sign language recognition},
+  author={Li, Dongxu and Yu, Xin and Xu, Chenchen and Petersson, Lars and Li, Hongdong},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6205--6214},
+  year={2020}
+}
+```
