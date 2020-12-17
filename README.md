@@ -32,10 +32,10 @@ pip install --editable .
 
 #### Preprocessing
 
-You may download our preprocessed dataset from [Dataset](https://drive.google.com/drive/folders/1oYV_k1wqGbPUhBrkLRMQb1iWKQp5P3pp?usp=sharing), and put them as:
+Download the [preprocessed dataset](https://drive.google.com/drive/folders/1oYV_k1wqGbPUhBrkLRMQb1iWKQp5P3pp?usp=sharing), and arrange them as:
 
 ```
-tspnet/
+TSPNet/
 ├── i3d-features/
 │   ├── span=8_stride=2
 │   ├── span=12_stride=2
@@ -55,24 +55,26 @@ tspnet/
 
 #### Training
 
-Step into the `run_scripts` folder and start training the model by:
+Go to the `run_scripts` folder and start training:
 
 ```bash
+cd TSPNet/run_scripts
 SAVE_DIR=CHECKPOINT_PATH bash run_phoenix_pos_embed_sp_test_3lvl.sh
 ```
 
-This script run the model reported best performance as in the paper. It feeds the feature pyramid with all 3 scales of features (i.e., with windowing widths of 8, 12, 16).
+<!---The script replicates performance in the paper. --->
 
 #### Testing
+After training, you can make inference on the testing dataset by specifying a checkpoint file.
 
-To validate the model on the testing test, run the testing script with the checkpoints saved from the training step.
-Be sure to pass the path to the checkpoint file not the folder to the parameter `CHECKPOINT`.
+<!---To validate the model on the testing test, run the testing script with the checkpoints saved from the training step.--->
+**Note**, `CHECKPOINT_FILE_PATH` points to a saved checkpoint file, rather the `CHECKPOINT` folder.
 
 ```bash
 CHECKPOINT=CHECKPOINT_FILE_PATH bash test_phoenix_pos_embed_sp_test_3lvl.sh
 ```
 
-The scripts report multiple performance results where the last line will show the ROUGE-L and BLEU-{n} as in the paper.
+The script reports multiple metrics, including the ROUGE-L and BLEU-{n} as reported in the paper.
 
 
 #### Alternative instructions for preparing datasets by yourself
@@ -130,8 +132,7 @@ data-bin/
 
 
 ### Citations
-
-Please cite our paper and [WLASL dataset](https://dxli94.github.io/WLASL/) if you find TSPNet useful:
+Please cite our paper and [WLASL dataset](https://dxli94.github.io/WLASL/) (for pre-training) as:
 
 ``` bibtex
 @inproceedings{li2020tspnet,
