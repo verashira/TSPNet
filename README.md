@@ -2,7 +2,7 @@
 
 **[TSPNet: Hierarchical Feature Learning via Temporal Semantic Pyramid for Sign Language Translation](https://proceedings.neurips.cc//paper/2020/file/8c00dee24c9878fea090ed070b44f1ab-Paper.pdf)**
 
-By [Dongxu Li](https://scholar.google.com.au/citations?user=h5XtaUUAAAAJ&hl=en&oi=ao)&ast;, [Chenchen Xu](https://scholar.google.com.au/citations?user=01_mhZcAAAAJ&hl=en)&ast;,  [Xin Yu](https://scholar.google.com.au/citations?user=oxdtuSEAAAAJ&hl=en), [Kaihao Zhang](https://scholar.google.com.au/citations?user=eqwDXdMAAAAJ&hl=en), [Benjamin Swift](https://scholar.google.com.au/citations?user=OQdYgLEAAAAJ&hl=en), [Hanna Suominen](https://scholar.google.com.au/citations?user=o4qymo4AAAAJ&hl=en), [Hongdong Li](https://scholar.google.com.au/citations?user=Mq89JAcAAAAJ&hl=en)
+By [Dongxu Li](https://scholar.google.com.au/citations?user=h5XtaUUAAAAJ&hl=en&oi=ao)&ast;, [Chenchen Xu](https://scholar.google.com.au/citations?user=01_mhZcAAAAJ&hl=en)&ast;,  [Xin Yu](https://scholar.google.com.au/citations?user=oxdtuSEAAAAJ&hl=en), [Kaihao Zhang](https://scholar.google.com.au/citations?user=eqwDXdMAAAAJ&hl=en), [Benjamin Swift](https://scholar.google.com.au/citations?user=OQdYgLEAAAAJ&hl=en), [Hanna Suominen](https://scholar.google.com.au/citations?user=o4qymo4AAAAJ&hl=en) and [Hongdong Li](https://scholar.google.com.au/citations?user=Mq89JAcAAAAJ&hl=en)
 
 (&ast; Authors contributed equally.)
 
@@ -131,7 +131,7 @@ data-bin/
 
 ### Citations
 
-Please cite our paper if you find it useful:
+Please cite our paper and [WLASL dataset](https://dxli94.github.io/WLASL/) if you find TSPNet useful:
 
 ``` bibtex
 @inproceedings{li2020tspnet,
@@ -141,11 +141,7 @@ Please cite our paper if you find it useful:
 	booktitle    = {Advances in Neural Information Processing Systems},
 	volume       = 33
 }
-```
 
-Please also consider citing the [WLASL dataset](https://dxli94.github.io/WLASL/) if you use the pre-trained i3d features.
-
-``` bibtex
 @inproceedings{li2020word,
     title={Word-level Deep Sign Language Recognition from Video: A New Large-scale Dataset and Methods Comparison},
     author={Li, Dongxu and Rodriguez, Cristian and Yu, Xin and Li, Hongdong},
