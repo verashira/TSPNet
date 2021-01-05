@@ -24,7 +24,7 @@ We thank authors of [fairseq](https://github.com/pytorch/fairseq) for their effo
 Install the project from source and develop locally:
 
 ```bash
-cd fairseq
+cd TSPNet/
 pip install --editable .
 ```
 
